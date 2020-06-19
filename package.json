@@ -1,0 +1,26 @@
+{
+  "name": "challenge-server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "author": "Mário Jr",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "semantic-ui-react": "^0.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
