@@ -2,9 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const app = express();
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 const port = process.env.PORT || 3030;
-const clientId = '940b2aaa385ae699df91';
-const clientSecret = 'd4c9aaec3452fc25bb15429c79ccd63d0a0b24dc';
+const clientId = process.env.GITHUB_CLIENT_ID;
+const clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
 let token = false;
 
@@ -67,10 +71,10 @@ app.get('/api/user/repos', (req, res) => {
 });
 
 if(process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.use(express.static(path.join(process.env.__dirname, 'client/build')));
         
     app.get('*', function(req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+        res.sendFile(path.join(process.env.__dirname, 'client/build', 'index.html'));
     });
 }
 
