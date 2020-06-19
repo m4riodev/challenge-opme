@@ -10,6 +10,7 @@ dotenv.config();
 const port = process.env.PORT || 3030;
 const clientId = process.env.GITHUB_CLIENT_ID;
 const clientSecret = process.env.GITHUB_CLIENT_SECRET;
+const appUrl = process.env.APP_URL;
 
 let token = false;
 
@@ -26,7 +27,7 @@ app.get('/callback', (req, res) => {
         then(res => res.data['access_token']).
         then(_token => {
             token = _token;
-            res.redirect('http://localhost:3000/users');
+            res.redirect(`${appUrl}/users`);
         }).
         catch(err => res.status(500).json({ message: err.message }));
 });
