@@ -10,7 +10,6 @@ dotenv.config();
 const port = process.env.PORT || 3030;
 const clientId = process.env.GITHUB_CLIENT_ID;
 const clientSecret = process.env.GITHUB_CLIENT_SECRET;
-const appUrl = process.env.APP_URL;
 
 let token = false;
 
