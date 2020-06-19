@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Dimmer, Loader, Card, Icon, Image } from 'semantic-ui-react';
+import Moment from 'react-moment';
 
 const User = () => {
   const { username } = useParams();
@@ -27,7 +28,9 @@ const User = () => {
         <Card.Content>
           <Card.Header>{user.name} || {user.login}</Card.Header>
           <Card.Meta>
-            <span className='date'>Joined in 2015</span>
+            <span className='date'>
+              Joined in <Moment format="MM/DD/YYYY">{user.created_at}</Moment>
+            </span>
           </Card.Meta>
           <Card.Description>{user.bio}</Card.Description>
         </Card.Content>
@@ -36,30 +39,30 @@ const User = () => {
             <Icon name='numbered list' />
             {user.id}
           </p>
-          <p>
+          { user.location && <p>
             <Icon name='map outline' />
             {user.location}
-          </p>
-          <p>
+          </p> }
+          { user.company && <p>
             <Icon name='building outline' />
             {user.company}
-          </p>
-          <p>
-            <a href={user.blog} target="_blank">
+          </p> }
+          { user.html_url && <p>
+            <a href={user.html_url} target="_blank">
               <Icon name='github' />
               {user.html_url}
             </a>
-          </p>
-          <p>
+          </p> }
+          { user.blog && <p>
             <a href={user.blog} target="_blank">
               <Icon name='blogger' />
               {user.blog}
             </a>
-          </p>
-          <p>
+          </p> }
+          { user.twitter_username && <p>
             <Icon name='twitter' />
             {user.twitter_username}
-          </p>
+          </p> }
         </Card.Content>
       </Card>
     )

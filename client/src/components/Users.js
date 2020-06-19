@@ -24,7 +24,7 @@ const Users = () => {
   if(users.length > 0){
     return (
       <>
-        <Segment>
+        <Segment style={{marginTop: '50px'}}>
           <Item.Group divided as="ul" style={{padding: 0}}>
             { users.map((value, index) => (
               <Item key={index} as="li">
@@ -47,8 +47,8 @@ const Users = () => {
             ))}
           </Item.Group>
         </Segment>
-        { page > 1 && <Button as={Link} to={`/${(parseInt(page) - 1)}`} onClick={() => window.scrollTo(0, 0)} secondary icon labelPosition='left'><Icon name='left arrow' />Previous</Button> }
-        <Button as={Link} to={`/${(parseInt(page) + 1)}`} onClick={() => window.scrollTo(0, 0)} primary icon labelPosition='right'>Next<Icon name='right arrow' /></Button>
+        { page > 1 && <Button as={Link} to={`/users/${(parseInt(page) - 1)}`} onClick={() => window.scrollTo(0, 0)} secondary icon labelPosition='left'><Icon name='left arrow' />Previous</Button> }
+        <Button as={Link} to={`/users/${(parseInt(page) + 1)}`} onClick={() => window.scrollTo(0, 0)} primary icon labelPosition='right'>Next<Icon name='right arrow' /></Button>
       </>
     )
   } else {
