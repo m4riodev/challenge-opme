@@ -4,7 +4,12 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { Container, Segment, Header, Icon } from 'semantic-ui-react';
+import { 
+  Container, 
+  Segment, 
+  Header, 
+  Icon 
+} from 'semantic-ui-react';
 import Home from './Home';
 import Users from './Users';
 import User from './User';
@@ -19,7 +24,7 @@ const App = () => {
             Challenge - GitHub API
           </Header>
           <Switch>
-            <Route path="/user/:username" children={<User />} />
+            <Route path="/user/:username?" children={<User />} />
             <Route path="/users/:page?" children={<Users />} />
             <Route path="/" children={<Home />} />
           </Switch>

@@ -1,14 +1,10 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 
-const login = async () => {
-  await fetch('/api/auth');
-}
-
 const Home = () => { 
   return (
-    <div style={{paddingTop: '50px', textAlign: 'center'}} onClick={() => login()}>
-      <Button icon primary  size='massive' labelPosition='left'>
+    <div style={{paddingTop: '50px', textAlign: 'center'}}>
+      <Button icon primary as="a" href="https://github.com/login/oauth/authorize?client_id=940b2aaa385ae699df91&scope=user" size='massive' labelPosition='left'>
         <Icon name='github alternate' />Log with GitHub
       </Button>
     </div>

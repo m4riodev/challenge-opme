@@ -10,13 +10,6 @@ let token = false;
 
 app.use(cors());
 
-app.get('/api/auth', (req, res) => {
-    if(!token) 
-        res.redirect(308, `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user`);
-    else
-        res.json({ ok: 1 });
-});
-
 app.get('/callback', (req, res) => {
     const body = {
       client_id: clientId,
@@ -28,7 +21,7 @@ app.get('/callback', (req, res) => {
         then(res => res.data['access_token']).
         then(_token => {
             token = _token;
-            res.json({ ok: 1 });
+            res.redirect('http://localhost:3000/users');
         }).
         catch(err => res.status(500).json({ message: err.message }));
 });
@@ -49,11 +42,33 @@ app.get('/api/users/:username/details', (req, res) => {
         catch(err => res.status(500).json({ message: err.message }));
 });
 
+app.get('/api/user', (req, res) => {
+    const opts = { headers: { accept: 'application/json', authorization: `token ${token}` } };
+    axios.get(`https://api.github.com/user`, opts).
+        then(res => res.data).
+        then(user => res.json(user)).
+        catch(err => res.status(500).json({ message: err.message }));
+});
+
+app.get('/api/users/:username/repos', (req, res) => {
+    const opts = { headers: { accept: 'application/json', authorization: `token ${token}` } };
+    axios.get(`https://api.github.com/users/${req.params.username}/repos`, opts).
+        then(res => res.data).
+        then(repos => res.json(repos)).
+        catch(err => res.status(500).json({ message: err.message }));
+});
+
+app.get('/api/user/repos', (req, res) => {
+    const opts = { headers: { accept: 'application/json', authorization: `token ${token}` } };
+    axios.get(`https://api.github.com/user/repos`, opts).
+        then(res => res.data).
+        then(repos => res.json(repos)).
+        catch(err => res.status(500).json({ message: err.message }));
+});
+
 if(process.env.NODE_ENV === 'production') {
-    // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
         
-    // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
