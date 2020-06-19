@@ -16,18 +16,17 @@ let token = false;
 
 app.use(cors());
 
-app.get('/callback', (req, res) => {
+app.get('/api/callback/:code', (req, res) => {
     const body = {
       client_id: clientId,
       client_secret: clientSecret,
-      code: req.query.code
+      code: req.params.code
     };
     const opts = { headers: { accept: 'application/json' } };
     axios.post(`https://github.com/login/oauth/access_token`, body, opts).
         then(res => res.data['access_token']).
         then(_token => {
             token = _token;
-            res.redirect(`${appUrl}/users`);
         }).
         catch(err => res.status(500).json({ message: err.message }));
 });
