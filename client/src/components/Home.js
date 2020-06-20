@@ -9,8 +9,8 @@ const Home = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
 
-  const callback = (code) => {
-    fetch(`/api/callback/${code}`);
+  const callback = async (code) => {
+    await fetch(`/api/callback/${code}`);
     history.push('/users');
   }
 
@@ -30,7 +30,7 @@ const Home = () => {
           <small style={{ display: 'block', textAlign: 'right' }}>-James Michener</small>
         </Segment>
         <Button icon primary as="a" href={`https://github.com/login/oauth/authorize?client_id=${clientId}&scope=user`} size='massive' labelPosition='left'>
-          <Icon name='github alternate' />Log with GitHub
+          <Icon name='github alternate' />Continue with GitHub
         </Button>
       </div>
     )
