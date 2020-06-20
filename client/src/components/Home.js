@@ -9,8 +9,8 @@ const Home = () => {
   const history = useHistory();
   const parsed = queryString.parse(window.location.search);
 
-  const callback = async (code) => {
-    await fetch(`/api/callback/${code}`);
+  const callback = (code) => {
+    fetch(`/api/callback/${code}`);
     history.push('/users');
   }
 
