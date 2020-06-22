@@ -12,7 +12,6 @@ import {
 import Moment from 'react-moment';
 
 const User = () => {
-  const btRef = useRef();
   const { username } = useParams();
   const history = useHistory(); 
   const [user, setUser] = useState({});
