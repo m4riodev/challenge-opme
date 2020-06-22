@@ -32,7 +32,7 @@ const User = () => {
     setUser(body);
   }
 
-  useEffect(() => { return getUser() }, []); 
+  useEffect(() => { getUser() }, []); 
   
   if(Object.keys(user).length !== 0 && user.constructor === Object){
     return (
