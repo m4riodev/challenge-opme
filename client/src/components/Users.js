@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useHistory, withRouter } from 'react-router-dom';
+import { Link, useParams, withRouter } from 'react-router-dom';
 import { 
   Segment, 
   Dimmer, 
@@ -9,8 +9,7 @@ import {
   Button 
 } from 'semantic-ui-react';
 
-const Users = () => {
-  const history = useHistory(); 
+const Users = ({history}) => {
   const params = useParams();
   const page = params.page ? params.page : 1;
   const [users, setUsers] = useState([]);

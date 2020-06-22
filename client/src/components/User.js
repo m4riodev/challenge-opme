@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory, withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import { 
   Dimmer, 
   Loader, 
@@ -11,9 +11,8 @@ import {
   Grid } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
-const User = () => {
+const User = ({history}) => {
   const { username } = useParams();
-  const history = useHistory(); 
   const [user, setUser] = useState({});
   
   const getUser = async () => {
