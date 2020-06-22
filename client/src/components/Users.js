@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory, useRef } from 'react-router-dom';
 import { 
   Segment, 
   Dimmer, 
@@ -10,6 +10,7 @@ import {
 } from 'semantic-ui-react';
 
 const Users = () => {
+  const inputRef = useRef();
   const history = useHistory(); 
   const params = useParams();
   const page = params.page ? params.page : 1;
@@ -25,7 +26,7 @@ const Users = () => {
     setUsers(body);
   }
 
-  useEffect(() => { getUsers() }, [page, users]); 
+  useEffect(() => { getUsers() }, [page, inputRef]); 
   
   console.log('users: ', users.length);
 
