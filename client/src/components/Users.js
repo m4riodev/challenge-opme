@@ -25,7 +25,7 @@ const Users = () => {
     setUsers(body);
   }
 
-  useEffect(() => { getUsers() }); 
+  useEffect(() => { getUsers() }, []); 
   
   if(users.length > 0){
     return (
