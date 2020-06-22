@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory, withRouter } from 'react-router-dom';
 import { 
   Segment, 
   Dimmer, 
@@ -14,20 +14,18 @@ const Users = () => {
   const params = useParams();
   const page = params.page ? params.page : 1;
   const [users, setUsers] = useState([]);
+  
+  const getUsers = async () => {
+    const since = ((page ? page : 1) - 1) * 30;
+    const response = await fetch(`/api/users/${since}`);
+    const body = await response.json();
+    
+    if (response.status !== 200) throw history.push('/');
+    
+    setUsers(body);
+  }
 
-  useEffect(() => { 
-    async function getUsers() {
-      const since = ((page ? page : 1) - 1) * 30;
-      const response = await fetch(`/api/users/${since}`);
-      const body = await response.json();
-      
-      if (response.status !== 200) throw history.push('/');
-      
-      setUsers(body);
-    }
-
-    getUsers(); 
-  }); 
+  useEffect(() => { getUsers() }, [page]); 
   
   if(users.length > 0){
     return (
@@ -68,4 +66,4 @@ const Users = () => {
   }
 }
 
-export default Users;
+export default withRouter(Users);
