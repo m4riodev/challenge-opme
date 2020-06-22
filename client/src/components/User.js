@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { 
   Dimmer, 
   Loader, 
@@ -11,8 +11,9 @@ import {
   Grid } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
-const User = ({history}) => {
+const User = () => {
   const { username } = useParams();
+  const history = useHistory(); 
   const [user, setUser] = useState({});
   
   const getUser = async () => {
@@ -112,4 +113,4 @@ const User = ({history}) => {
   }
 }
 
-export default withRouter(User);
+export default User;
