@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { 
   Dimmer, 
@@ -81,7 +81,7 @@ const User = () => {
               </p> }
             </Card.Content>
           </Card>
-          <Button ref={btRef} onClick={() => history.goBack()}>Back</Button>
+          <Button onClick={() => history.goBack()}>Back</Button>
         </Grid.Column>
         <Grid.Column floated='right' width={11}>
           <Table basic='very' style={{width:'100%'}} celled collapsing>

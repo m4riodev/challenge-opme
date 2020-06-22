@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import { 
   Segment, 
@@ -10,7 +10,6 @@ import {
 } from 'semantic-ui-react';
 
 const Users = () => {
-  const btRef = useRef();
   const history = useHistory(); 
   const params = useParams();
   const page = params.page ? params.page : 1;
@@ -26,7 +25,7 @@ const Users = () => {
     setUsers(body);
   }
 
-  useEffect(() => { getUsers() }, [page, btRef]); 
+  useEffect(() => { getUsers() }, [, page]); 
   
   if(users.length > 0){
     return (
