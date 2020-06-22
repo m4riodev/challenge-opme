@@ -28,8 +28,6 @@ const Users = () => {
 
   useEffect(() => { getUsers() }, [page, btRef]); 
   
-  console.log('users: ', users.length);
-
   if(users.length > 0){
     return (
       <>
