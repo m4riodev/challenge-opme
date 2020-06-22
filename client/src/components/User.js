@@ -80,7 +80,7 @@ const User = () => {
               </p> }
             </Card.Content>
           </Card>
-          <Button onClick={() => history.goBack()}>Back</Button>
+          <Button ref={btRef} onClick={() => history.goBack()}>Back</Button>
         </Grid.Column>
         <Grid.Column floated='right' width={11}>
           <Table basic='very' style={{width:'100%'}} celled collapsing>

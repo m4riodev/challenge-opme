@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react';
 
 const Users = () => {
-  const inputRef = useRef();
+  const btRef = useRef();
   const history = useHistory(); 
   const params = useParams();
   const page = params.page ? params.page : 1;
@@ -26,7 +26,7 @@ const Users = () => {
     setUsers(body);
   }
 
-  useEffect(() => { getUsers() }, [page, inputRef]); 
+  useEffect(() => { getUsers() }, [page, btRef]); 
   
   console.log('users: ', users.length);
 
