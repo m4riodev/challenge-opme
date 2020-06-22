@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, withRouter } from 'react-router-dom';
 import { 
   Dimmer, 
   Loader, 
@@ -113,4 +113,4 @@ const User = () => {
   }
 }
 
-export default User;
+export default withRouter(User);
