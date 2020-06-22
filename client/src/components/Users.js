@@ -25,7 +25,7 @@ const Users = () => {
     setUsers(body);
   }
 
-  useEffect(() => { getUsers() }, [page, history.action]); 
+  useEffect(() => { getUsers() }, [page, users]); 
   
   console.log('users: ', users.length);
 
